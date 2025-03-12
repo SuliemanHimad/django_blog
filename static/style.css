@@ -3,3 +3,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+.tag {
+  color: green;
+  margin: 5px 0;
+  display: block;
+}
+
+.fa-clock {
+  color: blue;
+}
