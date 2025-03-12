@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="row gy-4">
+    {% include './featuredPosts.html' with featuredPosts=featuredPosts %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9 col-12 mt-5">
+    {% include './latesPosts.html' with post_lists=post_lists %}
+  </div>
+</div>
+
+{% endblock content %}

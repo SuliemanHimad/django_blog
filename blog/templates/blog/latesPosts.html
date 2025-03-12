@@ -1,0 +1,28 @@
+<h5 class="text-muted">All Posts</h5>
+<hr />
+{% for post in post_lists %}
+<div class="card mb-5">
+  <div class="row gy-5">
+    <div class="col-md-4">
+      <img src="{{ post.image }}" class="card-img" alt="..." />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <span class="tag">{{ post.category | upper }}</span>
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content | truncatewords:10 }}</p>
+        <p><i class="fa fa-clock"></i> {{ post.createAt | timesince }} ago</p>
+        <a href="#" class="btn btn-outline-light text-primary my-2"
+          >Read More...</a
+        >
+        <a href="#" class="btn btn-outline-success"
+          ><i class="fa fa-pen"></i
+        ></a>
+        <a href="#" class="btn btn-outline-danger"
+          ><i class="fa fa-trash"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {% include './pagination.html' with obj_pagination=post_lists %}
