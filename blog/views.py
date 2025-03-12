@@ -7,7 +7,7 @@ def HomeView(request):
     featuredPosts = Post.objects.order_by('-id')[0:3]
     post_lists  = Post.objects.order_by('-id')
 
-    paginator = Paginator(post_lists, 2)
+    paginator = Paginator(post_lists, 5)
     page = request.GET.get('page')
     post_lists = paginator.get_page(page)
 
