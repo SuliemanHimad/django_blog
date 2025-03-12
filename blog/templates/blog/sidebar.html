@@ -1,0 +1,44 @@
+<h5 class="text-muted">Meet the Author</h5>
+<hr />
+<div class="card">
+  <img
+    src="https://static.vecteezy.com/system/resources/thumbnails/036/594/092/small_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
+    alt="Profile-img"
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <h5 class="card-title text-center">Author Name</h5>
+    <p class="card-text">
+      <span class="tag">Author Bio</span> Sulaiman Hamad (Arabic: سليمان حمد;
+      born 19 May 1994, in Jeddah) is a Saudi judoka. He competed at the 2016
+      Summer Olympics in the men's 66 kg, in which he was eliminated in the
+      second round by Davaadorjiin Tömörkhüleg. He was the flag bearer for Saudi
+      Arabia at the Parade of Nations. World Champ.
+    </p>
+    <div class="d-flex justify-content-center">
+      <a href="#" class="btn btn-outline-primary">Follow</a>
+    </div>
+  </div>
+</div>
+<div class="mt-5">
+  <h5 class="text-muted">Social Media</h5>
+  <hr />
+  <div class="btn-group mt-2">
+    <a href="#"><i class="fs-3 me-2 fab fa-facebook"></i></a>
+    <a href="#"><i class="fs-3 mx-4 fab fa-instagram"></i></a>
+    <a href="#"><i class="fs-3 mx-4 fab fa-google-plus"></i></a>
+    <a href="#"><i class="fs-3 mx-4 fab fa-twitter"></i></a>
+    <a href="#"><i class="fs-3 mx-3 fab fa-linkedin"></i></a>
+  </div>
+</div>
+<div class="mt-5">
+  <h5 class="text-muted">Categories</h5>
+  <hr />
+  <ul class="list-group">
+    {% for category in categories %}
+    <li class="list-group-item">
+      <a href="#" class="text-decoration-none">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
