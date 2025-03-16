@@ -1,7 +1,7 @@
 <!-- Navbar Section -->
 <div class="navbar navbar-expand-md bg-success navbar-light sticky-top">
   <div class="container">
-    <a href="" class="navbar-brand text-light fw-bolder">Django Blog</a>
+    <a href="/" class="navbar-brand text-light fw-bolder">Django Blog</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,25 +15,44 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a href="" class="nav-link active">Home</a>
+          <a href="/" class="nav-link active">Home</a>
+        </li>
+        {%if user.is_authenticated%}
+        <li class="nav-item">
+          <a href="{% url 'blog:category' %}" class="nav-link active"
+            >Category</a
+          >
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link active">Category</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link active">Add Category</a>
+          <a href="{% url 'blog:category-create' %}" class="nav-link active"
+            >Add Category</a
+          >
         </li>
         <li class="nav-item">
           <a href="" class="nav-link active">Add New Post</a>
         </li>
-        <li class="nav-item">
-          <a href="" class="nav-link active">Welcome</a>
-        </li>
+        {%endif%}
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
         <li class="nav-item">
-          <a href="" class="nav-link active">Logout</a>
+          <a href="" class="nav-link active">Welcome: {{user.username}}</a>
         </li>
+        <li class="nav-item">
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="nav-link active btn btn-link">
+              Logout
+            </button>
+          </form>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{% url 'login' %}" class="nav-link active btn btn-link"
+            >Login</a
+          >
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

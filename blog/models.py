@@ -6,6 +6,7 @@ class Category (models.Model):
     name = models.CharField(max_length=50, unique=True)
     createAt = models.DateTimeField(auto_now_add=True)
     createdBy = models.IntegerField()
+    updatedBy= models.IntegerField(blank=True, null=True)
 
 
     def __str__(self):

@@ -1,10 +1,57 @@
+{% extends 'base.html' %}
+<!-- load CrispForm -->
+{% load crispy_forms_tags %}
+<!-- Load Static -->
+{% load static %}
+
+<!-- block Content -->
 {% block content %}
-<h1>Categories</h1>
-<ul>
-  {% for category in categories %}
-  <li>
-    <a href="">{{ category.name }}</a>
-  </li>
+
+<!-- Show Msg -->
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+
+  <li {% if message.tags %} class="{{message.tags}}" {%endif%}>{{message}}</li>
+
   {% endfor %}
 </ul>
+
+{% endif %}
+
+<div class="row">
+  <div class="col-10 mx-auto">
+    <table class="table table-hover text-success">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cat in categories %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{cat.name}}</td>
+          <td>
+            <a
+              href="{% url 'blog:category-update' cat.pk %}"
+              class="btn btn-outline-success btn-sm"
+              ><i class="fa fa-edit"></i
+            ></a>
+            <a
+              href="{% url 'blog:category-delete' cat.pk %}"
+              class="btn btn-outline-danger btn-sm"
+              ><i class="fa fa-trash"></i
+            ></a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    {% include 'blog/pagination.html' with obj_pagination=categories %}
+  </div>
+</div>
 {% endblock content%}
