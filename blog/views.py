@@ -3,7 +3,7 @@ from blog.models import Category,Post
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CategoryModalForm
+from .forms import CategoryModalForm,PostModalForm
 
 
 # Home View Function
@@ -45,7 +45,6 @@ def CategoryView(request):
     return render(request, 'blog/categories.html', context)
 
 @login_required
-
 def CategoryUpdateView(request, pk):
     cat_id =get_object_or_404(Category,pk=pk)
     form = CategoryModalForm(request.POST or None, instance=cat_id)
@@ -90,3 +89,48 @@ def CategoryCreateView(request):
     }
 
     return render(request,'blog/category-form.html',context)
+
+
+
+@login_required
+
+def CreatePostView(request):
+    form = PostModalForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.createdBy = request.user.id
+        obj.save()
+        messages.success(request,"Post Created Successfully")
+        return redirect("/")
+    context={
+        'form':form,
+        'valueBtn':'Add',
+        'title':'Create Post'
+    }
+
+    return render(request,'blog/post-form.html',context)
+
+@login_required
+def UpdatePostView(request, pk):
+    post_id = get_object_or_404(Post,pk=pk)
+    form = PostModalForm(request.POST or None, request.FILES or None, instance=post_id)
+    if form.is_valid():
+        obj =form.save(commit=False)
+        obj.updatedBy = request.user.id
+        obj.save()
+        messages.success(request, "Post Updated Successfully")
+        return redirect("/")
+    context={
+        'form':form,
+        'valueBtn':'Update',
+        'title':'Update Post'
+    }
+
+    return render(request,'blog/post-form.html',context)
+
+@login_required
+def DeletePostView(request,pk):
+    post_query_del = get_object_or_404(Post,pk=pk)
+    post_query_del.delete()
+    messages.success(request,"Post Deleted Successfully")
+    return redirect("/")

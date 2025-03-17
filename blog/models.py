@@ -26,6 +26,7 @@ class Post (models.Model):
     tags = models.CharField(max_length=20)
     createAt = models.DateTimeField(auto_now_add=True)
     createdBy = models.IntegerField()
+    updatedBy= models.IntegerField(blank=True, null=True)
     
 
     def __str__(self):

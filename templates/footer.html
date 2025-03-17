@@ -1,18 +1,29 @@
+{% load static %}
+
 <div class="container-fluid bg-success">
   <div class="container">
     <div class="row py-4">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-        <h5 class="text-muted">About us</h5>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12 shadow-lg">
+        <h5 class="text-light">About us</h5>
         <hr />
-        <h5>Lorem ipsum dolor sit amet.</h5>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis fuga
-          recusandae ducimus illo accusantium quo ex vitae minima alias, quam
-          architecto, iure fugit magnam in.
+        <h5>Django Somali News</h5>
+        <p class="text-muted">
+          Welcome to Django Somali News, your trusted source for news covering
+          both Somali affairs and global events. Our mission is to provide
+          accurate, timely, and insightful reporting, ensuring that our audience
+          stays informed about the latest developments locally and
+          internationally. We are committed to delivering balanced journalism,
+          covering politics, business, culture, and social issues that matter
+          most. Whether it's breaking news from Somalia or major world events,
+          we bring you in-depth analysis and reliable updates. At Django Somali
+          News, we believe in the power of information to inspire change and
+          connect communities. Join us as we bring the world closer to you, one
+          story at a time. Stay informed. Stay connected. Stay ahead. For
+          inquiries, collaborations, or tips, contact us at +252619905901.
         </p>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-        <h5 class="text-muted">Trending News</h5>
+        <h5 class="text-light">Trending News</h5>
         <hr />
         <div
           id="carouselExampleSlidesOnly"
@@ -22,7 +33,7 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="https://images.squarespace-cdn.com/content/v1/5b18735a3917ee20d18a2117/724950ae-68b2-4c0b-9812-0128b7fe5efb/b9839cd791f871c956edeead6becda8e374277ae832aa265625d80a43dad4334.jpg"
+                src="{% static 'images/xuutiyiin.webp'%}"
                 class="d-block w-100"
                 alt="img1"
                 {%
@@ -33,17 +44,13 @@
             </div>
             <div class="carousel-item">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi30i4AUqM8bFsmykaarM2KYGpSXb1JlfZUcvtdwDB-3uYCvWFM5y6oWCjnTEL-OfXG1A&usqp=CAU"
+                src="{% static 'images/dagaalBeledweyn.webp' %}"
                 class="d-block w-100"
                 alt="img2"
               />
             </div>
             <div class="carousel-item">
-              <img
-                src="https://d32qys9a6wm9no.cloudfront.net/images/movies/backdrop/f1/eee4b6b9b3c5cafae16b4dcb71331cc0_1280x720.jpg?t=1636109773"
-                class="d-block w-100"
-                alt="img3"
-              />
+              <img src="{% static 'images/duqeyn.webp' %}" alt="img3" />
             </div>
           </div>
         </div>
